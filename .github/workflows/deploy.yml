@@ -1,0 +1,41 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ source ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    - name: Add worktree for the master branch
+      run: |
+        git fetch --no-tags --prune --depth=1 origin +refs/heads/master:refs/remotes/origin/master
+        git worktree add --track -b master master origin/master
+
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.70.0'
+
+    - name: Build the site
+      run: hugo --minify --destination master
+
+    - name: Commit the new site
+      run: |
+        msg=[deploy]\ `git log -1 --pretty=format:"%s"`
+        echo "Commig message: $msg"
+        cd master
+        git add .
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "$msg"
+
+    - name: Push to master
+      run: |
+        cd master
+        git push
