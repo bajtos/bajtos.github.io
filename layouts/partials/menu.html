@@ -1,0 +1,13 @@
+{{/* Based on Hugo Hermit theme https://github.com/Track3/hermit */}}
+    {{- range .Site.Menus.main }}
+      {{- if .HasChildren }}
+        <a href="{{ .URL | absLangURL }}" class="has-children">{{ .Name }}</a>
+        <span class="sub-menu">
+        {{- range .Children }}
+          <a href="{{ .URL | absLangURL }}">{{ .Name }}</a>
+        {{- end }}
+        </span>
+      {{- else }}
+        <a href="{{ .URL | absLangURL }}">{{ .Name }}</a>
+      {{- end }}
+    {{- end }}

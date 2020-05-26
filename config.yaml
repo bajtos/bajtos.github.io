@@ -1,6 +1,12 @@
 baseURL: https://bajtos.net/
 languageCode: en-us
-title: Miroslav Bajtoš
+title: bajtos.net
 disableKinds:
   - taxonomy
   - taxonomyTerm
+author:
+  name: Miroslav Bajtoš
+params:
+  dateForm: 'Jan 2, 2006'
+  dateformShort: 'Jan 2'
+  dateformNumTime: '2006-01-02 15:04 CET'
