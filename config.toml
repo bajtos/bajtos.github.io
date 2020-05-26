@@ -1,4 +1,0 @@
-baseURL = "https://bajtos.net/"
-languageCode = "en-us"
-title = "Miroslav Bajtoš"
-disableKinds = ["taxonomy", "taxonomyTerm"]
