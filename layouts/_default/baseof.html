@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="{{.Site.LanguageCode}}">
+<html lang="{{.Site.LanguageCode}}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    {{- partial "favicons.html" }}
-    {{- partial "structured-data.html" . }}
+{{ partial "favicons.html" }}
+{{- partial "structured-data.html" . }}
     <title>{{.Title}}</title>
-    <!-- TODO range .AlternativeOutputFormats -->
+    {{- /* TODO range .AlternativeOutputFormats */ -}}
+    {{- partial "style.html" }}
+    {{- block "head" . -}}{{- end }}
   </head>
 
   <body id="page">
