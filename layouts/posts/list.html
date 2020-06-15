@@ -9,15 +9,10 @@
 
 {{ define "main" }}
 	<main class="site-main section-inner">
-		<h1>{{ .Title }}</h1>
-		{{- if .Content }}
-		<div class="content">
-			{{ .Content }}
-		</div>
-		{{- end }}
+		<h1>Blog posts</h1>
 		{{- range .Data.Pages.GroupByDate "2006" }}
 		<div class="posts-group">
-			<div class="post-year" id="{{ .Key }}">{{ .Key }}</div>
+			<h2 class="post-year" id="{{ .Key }}">{{ .Key }}</h2>
 			<ul class="posts-list">
 				{{- range .Pages }}
 				<li class="post-item">
