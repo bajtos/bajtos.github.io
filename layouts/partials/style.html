@@ -1,21 +1,42 @@
 <style>
+  html {
+    --bg: white;
+    --text: #111;
+    --blue: #0000a0;
+
+    background: var(--bg);
+    color: var(--text);
+    padding: 0;
+    margin: 0;
+  }
+
   body {
     /* font-family:Gill Sans,Ubuntu,sans-serif; */
     font-family: -apple-system,BlinkMacSystemFont,"avenir next",avenir,helvetica,"helvetica neue",ubuntu,roboto,noto,"segoe ui",arial,sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     margin: 0;
-    border: 0.5rem solid navy;
+    border: 0.5rem solid var(--blue);
     line-height: 1.5;
   }
 
-  #site-header {
-    padding: 3rem 3rem 1rem 3rem;
-    font-size: 2em;
+  a {
+    color: var(--blue);
+    text-decoration: none;
   }
 
-  #site-header a {
-    color: black;
+  a:hover,
+  a:focus,
+  a:active {
+    text-decoration: underline;
+  }
 
+  #site-header {
+    padding: 1em 1ch 0 1ch;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.5em;
+    color: var(--text);
   }
   
   .site-branding {
@@ -25,7 +46,7 @@
   }
 
   .site-branding a {
-    text-decoration: none;
+    color: var(--text);
   }
 
   .site-nav {
@@ -33,15 +54,14 @@
   }
 
   .site-nav a {
+    color: var(--text);
     margin-left: .8em;
     padding-bottom: 0.15em;
-    text-decoration: none;
-    border-bottom: 2px solid black;
   }
 
   main {
     padding: 1rem;
-    max-width: 900px;
+    max-width: 80ch;
     margin-left: auto;
     margin-right: auto;
     font-weight: 200;
@@ -49,13 +69,16 @@
 
   h1 {
     font-weight: bold;
-    font-size: 4em;
-    margin-block-start: 0;
+    font-size: 2.25em;
+    line-height: 1.2;
+    margin-top: 0.44em;
+    margin-bottom: 0.66em;
   }
 
   h2 {
     font-weight: normal;
-    font-size: 2em;
-    margin-bottom: 1em;
+    font-size: 1.5em;
+    margin-top: 0.44em;
+    margin-bottom: 0.66em;
   }
 </style>

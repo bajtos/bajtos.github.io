@@ -1,29 +1,54 @@
 {{ define "head" }}
-	<style>
-	/* list.html style */	
-	</style>
+<style>
+  main {
+    line-height: 1.2;
+  }
+  h2 {
+    margin-top: 1em;
+  }
+
+  .posts-list {
+    padding-inline-start: 2ch;
+    margin-top: 0;
+  }
+  
+  .posts-list li {
+    list-style-type: none;
+    display: flex;
+    margin-bottom: 1em;
+  }
+
+  .posts-list time {
+    display: block;
+    width: 7ch;
+    margin-right: 1ch;
+    flex: none;
+  }
+
+  .post-lists a {
+    display: block;
+  }
+</style>
 {{- end }}
 {{ define "header" }}
 {{ partialCached "header.html" . }}
 {{ end }}
 
 {{ define "main" }}
-	<main class="site-main section-inner">
+	<main>
 		<h1>Blog posts</h1>
 		{{- range .Data.Pages.GroupByDate "2006" }}
-		<div class="posts-group">
-			<h2 class="post-year" id="{{ .Key }}">{{ .Key }}</h2>
+		<section>
+			<h2 id="{{ .Key }}">{{ .Key }}</h2>
 			<ul class="posts-list">
 				{{- range .Pages }}
-				<li class="post-item">
-					<a href="{{.Permalink}}">
-						<span class="post-title">{{.Title}}</span>
-						<span class="post-day">{{ .Date.Format .Site.Params.dateformShort }}</span>
-					</a>
+				<li>
+          <time>{{ .Date.Format .Site.Params.dateformShort }}</time>
+					<a href="{{.Permalink}}">{{.Title}}</a>
 				</li>
 				{{- end }}
 			</ul>
-		</div>
+		</section>
 		{{- end }}
 	</main>
 {{ end }}
