@@ -29,17 +29,19 @@
     text-decoration: underline;
   }
 
-  #site-header {
-    padding: 1em 1ch 0.3em 1ch;
+  #site-header,
+  #site-footer {
     max-width: 60ch;
     margin-left: auto;
     margin-right: auto;
     font-size: 1.5em;
-    color: var(--black);
+  }
 
+  #site-header {
+    padding: 1em 1ch 0.3em 1ch;
     border-bottom: 2px dashed var(--black);
   }
-  
+
   .site-branding {
     display: inline-block;
     margin-right: .8em;
@@ -58,6 +60,23 @@
     color: var(--black);
     margin-left: .8em;
     padding-bottom: 0.15em;
+  }
+
+  #site-footer {
+    margin-top: 1em;
+    padding: 0.3em 1ch;
+    border-top: 2px dashed var(--black);
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #site-footer * {
+    font-size: 1rem;
+    color: var(--black);
+  }
+
+  #site-footer .social {
+    text-align: right;
   }
 
   main {

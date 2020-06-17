@@ -1,13 +1,13 @@
-  <footer id="site-footer" class="section-inner thin animated fadeIn faster">
-    <span style="text-align: left">
-        &copy; {{ now.Format "2006" }}
-        <a href="{{ .Site.BaseURL }}">{{ .Site.Author.name }}</a>
-        {{ .Site.Params.footerCopyright | safeHTML }}
-    </span>
-    <span style="text-align: right; width: 33%;">
-      <!-- TODO: social icons -->
-      <a href="{{ "posts/index.xml" | absLangURL }}" target="_blank" title="rss">
-        {{- partial "svg.html" "feed" -}}
-      </a>
-    </span>
-  </footer>
+<footer id="site-footer">
+  <div class="copyright">
+    &copy; {{ now.Format "2006" }} {{ .Site.Author.name }}
+  </div>
+  <section class="social">
+    <a href="{{ "posts/index.xml" | absLangURL }}" target="_blank" title="rss">
+      {{- partial "svg.html" "feed" -}}
+    </a>
+    <a href="https://mastodon.social/@bajtos">{{- partial "svg.html" "mastodon" }}</a>
+    <a href="https://twitter.com/bajtos">{{- partial "svg.html" "twitter" }}</a>
+    <a href="mailto:hello@bajtos.net">{{- partial "svg.html" "email" -}}</a>
+  </section>
+</footer>
