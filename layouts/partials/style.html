@@ -1,11 +1,11 @@
 <style>
   html {
-    --bg: white;
-    --text: #111;
+    --white: white;
+    --black: #111;
     --blue: #0000a0;
 
-    background: var(--bg);
-    color: var(--text);
+    background: var(--white);
+    color: var(--black);
     padding: 0;
     margin: 0;
   }
@@ -15,7 +15,6 @@
     font-family: -apple-system,BlinkMacSystemFont,"avenir next",avenir,helvetica,"helvetica neue",ubuntu,roboto,noto,"segoe ui",arial,sans-serif;
     font-size: 16px;
     margin: 0;
-    border: 0.5rem solid var(--blue);
     line-height: 1.5;
   }
 
@@ -31,12 +30,14 @@
   }
 
   #site-header {
-    padding: 1em 1ch 0 1ch;
+    padding: 1em 1ch 0.3em 1ch;
     max-width: 60ch;
     margin-left: auto;
     margin-right: auto;
     font-size: 1.5em;
-    color: var(--text);
+    color: var(--black);
+
+    border-bottom: 2px dashed var(--black);
   }
   
   .site-branding {
@@ -46,7 +47,7 @@
   }
 
   .site-branding a {
-    color: var(--text);
+    color: var(--black);
   }
 
   .site-nav {
@@ -54,7 +55,7 @@
   }
 
   .site-nav a {
-    color: var(--text);
+    color: var(--black);
     margin-left: .8em;
     padding-bottom: 0.15em;
   }
@@ -71,14 +72,10 @@
     font-weight: bold;
     font-size: 2.25em;
     line-height: 1.2;
-    margin-top: 0.44em;
-    margin-bottom: 0.66em;
   }
 
   h2 {
     font-weight: normal;
     font-size: 1.5em;
-    margin-top: 0.44em;
-    margin-bottom: 0.66em;
   }
 </style>
