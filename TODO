@@ -4,3 +4,7 @@
 - mobile menu vs. desktop menu
 - fix formatting in posts imported from StrongLoop Wordpress
 - import posts from Medium.com
+- responsive style - add a version for mobile phones
+- rework outer page shell to flex layout to ensure footer is always 
+  at the bottom of the viewport
+- add style for "blockquote", code snippets, inline code 
