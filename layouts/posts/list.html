@@ -14,13 +14,14 @@
   
   .posts-list li {
     list-style-type: none;
-    display: flex;
+    padding-left: 7ch;
     margin-bottom: 1em;
   }
 
   .posts-list time {
-    display: block;
+    display: inline-block;
     width: 7ch;
+    margin-left: -7ch;
     flex: none;
   }
 
@@ -77,7 +78,8 @@
 				{{- range .Pages }}
 				<li>
           <time>{{ .Date.Format .Site.Params.dateformShort }}</time>
-					<a href="{{.Permalink}}">{{.Title}}</a>
+          {{- /* remove whitespace between <time> and <a> */ -}}
+          <a href="{{.Permalink}}">{{.Title}}</a>
 				</li>
 				{{- end }}
 			</ul>
