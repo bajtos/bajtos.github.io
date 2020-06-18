@@ -3,11 +3,11 @@
     &copy; {{ now.Format "2006" }} {{ .Site.Author.name }}
   </div>
   <section class="social">
-    <a href="{{ "posts/index.xml" | absLangURL }}" target="_blank" title="rss">
+    <a href="{{ "posts/index.xml" | absLangURL }}" target="_blank" title="RSS feed">
       {{- partial "svg.html" "feed" -}}
     </a>
-    <a href="https://mastodon.social/@bajtos">{{- partial "svg.html" "mastodon" }}</a>
-    <a href="https://twitter.com/bajtos">{{- partial "svg.html" "twitter" }}</a>
-    <a href="mailto:hello@bajtos.net">{{- partial "svg.html" "email" -}}</a>
+    <a href="https://mastodon.social/@bajtos" title="Mastodon">{{- partial "svg.html" "mastodon" }}</a>
+    <a href="https://twitter.com/bajtos" title="Twitter">{{- partial "svg.html" "twitter" }}</a>
+    <a href="mailto:hello@bajtos.net" title="Email">{{- partial "svg.html" "email" -}}</a>
   </section>
 </footer>
