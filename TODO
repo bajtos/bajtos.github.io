@@ -5,6 +5,7 @@
 - fix formatting in posts imported from StrongLoop Wordpress
 - import posts from Medium.com
 - responsive style - add a version for mobile phones
-- rework outer page shell to flex layout to ensure footer is always 
+- rework outer page shell to flex layout to ensure footer is always
   at the bottom of the viewport
-- add style for "blockquote", code snippets, inline code 
+- add style for "blockquote", code snippets, inline code
+- change HTML title tag from "Posts" to "Blog posts"
