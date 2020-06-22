@@ -1,6 +1,6 @@
 baseURL: https://bajtos.net/
 languageCode: en-us
-title: bajtos.net
+title: Miroslav Bajtoš
 disableKinds:
   - taxonomy
   - taxonomyTerm
