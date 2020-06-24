@@ -18,6 +18,16 @@
   :not(pre):not(a) > code {
     color: var(--orange);
   }
+
+  pre {
+    margin: 1em;
+    padding: 1em 2em 1em 1em;
+    box-shadow: 3px 3px 3px rgba(68, 68, 68, 0.6);
+    border-radius: 7px;
+    border: 1px solid black;
+    white-space: pre-wrap;
+    /* TODO: text-indent: 2ch hanging; */
+  }
 </style>
 {{- end }}
 {{ define "header" }}

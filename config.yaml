@@ -4,6 +4,9 @@ title: Miroslav Bajtoš
 disableKinds:
   - taxonomy
   - taxonomyTerm
+markup:
+  highlight:
+    style: autumn
 author:
   name: Miroslav Bajtoš
 params:
