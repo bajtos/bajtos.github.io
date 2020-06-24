@@ -7,5 +7,8 @@
 - responsive style - add a version for mobile phones
 - rework outer page shell to flex layout to ensure footer is always
   at the bottom of the viewport
-- add style for "blockquote", code snippets, inline code
+- add style for "blockquote", code snippets
 - change HTML title tag from "Posts" to "Blog posts"
+- add "target=_blank" to external links, see
+  https://gohugo.io/getting-started/configuration-markup#markdown-render-hooks
+- update hugo to the latest version
