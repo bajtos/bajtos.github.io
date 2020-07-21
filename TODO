@@ -1,13 +1,13 @@
-- <link rel="manifest" href="/site.webmanifest">
-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
-- CSS styles
-- mobile menu vs. desktop menu
+MVP:
 - fix formatting in posts imported from StrongLoop Wordpress
 - import posts from Medium.com
-- responsive style - add a version for mobile phones
+- import posts from StrongLoop (since May)
 - rework outer page shell to flex layout to ensure footer is always
   at the bottom of the viewport
-- add style for "blockquote", code snippets
+
+Later:
+- <link rel="manifest" href="/site.webmanifest">
+- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
 - change HTML title tag from "Posts" to "Blog posts"
 - add "target=_blank" to external links, see
   https://gohugo.io/getting-started/configuration-markup#markdown-render-hooks
