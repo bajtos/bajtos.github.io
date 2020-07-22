@@ -2,8 +2,6 @@ MVP:
 - fix formatting in posts imported from StrongLoop Wordpress
 - import posts from Medium.com
 - import posts from StrongLoop (since May)
-- rework outer page shell to flex layout to ensure footer is always
-  at the bottom of the viewport
 
 Later:
 - <link rel="manifest" href="/site.webmanifest">
