@@ -4,74 +4,98 @@ date: 2014-05-20
 originalUrl: https://strongloop.com/strongblog/nodejs-loopback-android-sdk-1-3/
 ---
 
-StrongLoop is excited to announce a new version of the LoopBack Android SDK 1.3. The release adds two new features: user authentication and storage service client.
+StrongLoop is excited to announce a new version of the LoopBack Android SDK
+1.3. The release adds two new features: user authentication and storage service
+client.
 
-What’s [LoopBack](http://loopback.io)? It’s an open-source API server for Node.js applications. It enables mobile apps to connect to enterprise data through models that use pluggable [data sources and connectors](http://docs.strongloop.com/display/LB/Data+sources+and+connectors). Connectors provide connectivity to backend systems such as databases. Models are in turn exposed to mobile devices through REST APIs and client SDKs.
+<!--more-->
+
+What’s [LoopBack](http://loopback.io)? It’s an open-source API server for
+Node.js applications. It enables mobile apps to connect to enterprise data
+through models that use
+pluggable [data sources and connectors](http://docs.strongloop.com/display/LB/Data+sources+and+connectors).
+Connectors provide connectivity to backend systems such as databases. Models are
+in turn exposed to mobile devices through REST APIs and client SDKs.
 
 ## User authentication
 
-User authentication and authorization are important for many applications.  The LoopBack Android SDK provides classes that make it easy to connect an Android client app to a server application using LoopBack&#8217;s authentication and authorization model: <a href="http://apidocs.strongloop.com/loopback-android/api/index.html?com/strongloop/android/loopback/User.html" rel="nofollow">User</a>, that represents on the client a user instance on the server, and <a href="http://apidocs.strongloop.com/loopback-android/api/index.html?com/strongloop/android/loopback/UserRepository.html" rel="nofollow">UserRepository</a>.
+User authentication and authorization are important for many applications.  The
+LoopBack Android SDK provides classes that make it easy to connect an Android
+client app to a server application using LoopBack&#8217;s authentication and
+authorization
+model: <a href="http://apidocs.strongloop.com/loopback-android/api/index.html?com/strongloop/android/loopback/User.html" rel="nofollow">User</a>,
+that represents on the client a user instance on the
+server, and <a href="http://apidocs.strongloop.com/loopback-android/api/index.html?com/strongloop/android/loopback/UserRepository.html" rel="nofollow">UserRepository</a>.
 
-To get started:<!--more-->
+To get started:
 
-- Enable authentication in your loopback server as described in the <a href="http://docs.strongloop.com/display/LB/Access+control+tutorial">Access control tutorial</a>.
+- Enable authentication in your loopback server as described in
+  the <a href="http://docs.strongloop.com/display/LB/Access+control+tutorial">Access
+  control tutorial</a>.
 
-- Create an instance of `UserRepository<User>`: 
+- Create an instance of `UserRepository<User>`:
 
-```js
-RestAdapter restAdapter = // get the global adapter object
+  ```java
+  RestAdapter restAdapter = // get the global adapter object
 
-UserRepository<User> userRepo =
-    restAdapter.createRepository(UserRepository<User>.class);
-```
+  UserRepository<User> userRepo =
+      restAdapter.createRepository(UserRepository<User>.class);
+  ```
 
-- At application startup, find the currently logged-in user. When no user is logged in and your application requires an authenticated user, instead present the login screen Activity.
+- At application startup, find the currently logged-in user. When no user is
+  logged in and your application requires an authenticated user, instead present
+  the login screen Activity.
 
-```js
-userRepo.findCurrentUser(new ObjectCallback<User>() {
-
- @Override public void onSuccess(User user) {
-        if (user != null) {
-            // logged in
-        } else {
-            // anonymous user
-        }
-    }
-});
-```
+  ```java
+  userRepo.findCurrentUser(new ObjectCallback<User>() {
+      @Override public void onSuccess(User user) {
+        if (user != null) {
+            // logged in
+        } else {
+            // anonymous user
+        }
+      }
+  });
+  ```
 
 - Call the following method to log in a user:
 
-```js
-userRepo.loginUser("user@example.com", "password",
+  ```java
+  userRepo.loginUser("user@example.com", "password",
+  new UserRepository<User>.LoginCallback() {
+      @Override public void onSuccess(AccessToken token, User user) {
+          // user was logged in
+      }
+      @Override public void onError(Throwable t) {
+          // login failed
+      }
+  });
+  ```
 
- new UserRepository<User>.LoginCallback() {
-        @Override public void onSuccess(AccessToken token, User user) {
-            // user was logged in
-        }
-        @Override public void onError(Throwable t) {
-            // login failed
-        }
-    }
-);
-```
-- Use `getCachedCurrentUser()` in your `Activity` classes to get the data for the current user.
+- Use `getCachedCurrentUser()` in your `Activity` classes to get the data for
+  the current user.
 
-```js
-User currentUser = userRepo.getCachedCurrentUser();
+  ```java
+  User currentUser = userRepo.getCachedCurrentUser();
 
-if (currentUser != null) {
- // logged in
-} else {
- // anonymous user
-}
-```
+  if (currentUser != null) {
+   // logged in
+  } else {
+   // anonymous user
+  }
+  ```
 
-Refer to the LoopBack Android SDK <a href="http://docs.strongloop.com/display/LB/Android+SDK#AndroidSDK-Usersandauthentication" rel="nofollow">documentation</a> for more information.
+Refer to the LoopBack Android
+SDK <a href="http://docs.strongloop.com/display/LB/Android+SDK#AndroidSDK-Usersandauthentication" rel="nofollow">documentation</a> for
+more information.
 
 ## Working with files
 
-SDK version 1.3 adds support for working with files using the <a href="http://docs.strongloop.com/display/LB/Storage+service" rel="nofollow">LoopBack storage service</a>.  The storage service makes it easy to upload and download files to cloud storage providers and the server local file system. It supports the following providers:
+SDK version 1.3 adds support for working with files using
+the <a href="http://docs.strongloop.com/display/LB/Storage+service" rel="nofollow">LoopBack
+storage service</a>.  The storage service makes it easy to upload and download
+files to cloud storage providers and the server local file system. It supports
+the following providers:
 
 - Amazon
 - Rackspace
@@ -79,116 +103,128 @@ SDK version 1.3 adds support for working with files using the <a href="http://d
 - Azure
 - Server file system
 
-
-Let&#8217;s illustrate the client API on a hypothetical application for submitting insurance claims. To submit a claim, one has to attach documents proving the validity of the claim, such as pictures of the damaged property.
+Let&#8217;s illustrate the client API on a hypothetical application for
+submitting insurance claims. To submit a claim, one has to attach documents
+proving the validity of the claim, such as pictures of the damaged property.
 
 ## Solution design
 
-The LoopBack server will track claims using a `Claim` model. Supporting documents will be stored in a storage service.  There will be one container for every claim record.
+The LoopBack server will track claims using a `Claim` model. Supporting
+documents will be stored in a storage service.  There will be one container for
+every claim record.
 
-The Android application will enable user to view documents attached to a claim and to attach more documents.
+The Android application will enable user to view documents attached to a claim
+and to attach more documents.
 
-Refer to the blog post <a href="http://strongloop.com/strongblog/managing-nodejs-loopback-storage-service-provider/" rel="nofollow">Managing Objects in LoopBack with the Storage Provider of Your Choice</a> for instructions on how to setup storage service in your LoopBack application.
+Refer to the blog
+post <a href="http://strongloop.com/strongblog/managing-nodejs-loopback-storage-service-provider/" rel="nofollow">Managing
+Objects in LoopBack with the Storage Provider of Your Choice</a> for
+instructions on how to setup storage service in your LoopBack application.
 
 ## Creating a new claim
 
-To avoid extra checks further down the line, the app will create the container when the user enters a new claim in the system as shown below:
+To avoid extra checks further down the line, the app will create the container
+when the user enters a new claim in the system as shown below:
 
-```js
+```java
 ContainerRepository containerRepo = adapter.createRepository(ContainerRepository.class);
 
-containerRepo.create(claim.getId().toString(), new ObjectCallback<Container>() {
-    @Override
-    public void onSuccess(Container container) {
-        // container was created, save it
-        activity.setContainer(container);
-        // and continue to the next activity
-    }
+containerRepo.create(claim.getId().toString(), 
+new ObjectCallback<Container>() {
+    @Override
+    public void onSuccess(Container container) {
+        // container was created, save it
+        activity.setContainer(container);
+        // and continue to the next activity
+    }
 
-    @Override
-    public void onError(Throwable error) {
-       // request failed, report an error
-    }
+    @Override
+    public void onError(Throwable error) {
+        // request failed, report an error
+    }
 });
 ```
-## <strong>Displaying  documents</strong>##
 
-To display a list of documents that are already uploaded, we need to fetch all files in the container associated with the current claim as follows:
+## Displaying documents
 
-```js
+To display a list of documents that are already uploaded, we need to fetch all
+files in the container associated with the current claim as follows:
+
+```java
 activity.getContainer().getAllFiles(new ListCallback<File>() {
+    @Override
+    public void onSuccess(List<File> remoteFiles) {
+        // populate the UI with documents
+    }
 
-    @Override
-    public void onSuccess(List<File> remoteFiles) {
-        // populate the UI with documents
-    }
-
-    @Override
-    public void onError(Throwable error) {
-        // request failed, report an error
-    }
-}
+    @Override
+    public void onError(Throwable error) {
+        // request failed, report an error
+    }
+});
 ```
 
-To display the document, the app downloads its content and builds a `Bitmap` object that it can display on the Android device:
+To display the document, the app downloads its content and builds
+a `Bitmap` object that it can display on the Android device:
 
-```js
+```java
 void displayDocument(File remoteFile) {
 
-    file.download(new File.DownloadCallback() {
-        @Override   
-        public void onSuccess(byte[] content, String contentType) {
-            Bitmap image = BitmapFactory.decodeByteArray(content, 0, content.length);
-            // display the image in the GUI
-        }
+    file.download(new File.DownloadCallback() {
+        @Override   
+        public void onSuccess(byte[] content, String contentType) {
+            Bitmap image = BitmapFactory
+                .decodeByteArray(content, 0, content.length);
+            // display the image in the GUI
+        }
 
-        @Override
-        public void onError(Throwable error) {
-            // download failed, report an error
-        }
-    });
-}
+        @Override
+        public void onError(Throwable error) {
+            // download failed, report an error
+        }
+    });
+});
 ```
-## <strong>Attaching a new document</strong>##
 
-To keep this example simple, we will skip details on how to take pictures in Android (for information on this, see the <a href="http://developer.android.com/reference/android/hardware/Camera.html" rel="nofollow">Android Camera docs</a>). Once the picture is taken, the app uploads it to the storage service and updates the list of all documents:
+## Attaching a new document
 
-```js
+To keep this example simple, we will skip details on how to take pictures in
+Android (for information on this, see
+the <a href="http://developer.android.com/reference/android/hardware/Camera.html" rel="nofollow">Android
+Camera docs</a>). Once the picture is taken, the app uploads it to the storage
+service and updates the list of all documents:
+
+```java
 camera.takePicture(
+    null, // shutter callback
+    null, // raw callback
+    null, // postview callback
+    new Camera.PictureCallback() {
+        // jpeg callback
+        @Override
+        void onPictureTaken(byte[] data, Camera camera) {
+            // A real app would probably ask the user
+            // to provide a file name
+            String fileName = UUID.randomUUID().toString() + ".jpg";
 
-    null, /* shutter callback */
-    null, /* raw callback */
-    null, /* postview callback */
-    new Camera.PictureCallback() {
-        /* jpeg callback */
+            activity.getContainer().upload(fileName, data, "image/jpeg",
+                new ObjectCallback<File>() {
+                    @Override
+                    public void onSuccess(File remoteFile) {
+                        // Update GUI:
+                        // add remoteFile to the list of documents
+                    }
 
-        @Override
-        void onPictureTaken(byte[] data, Camera camera) {
-            // A real app would probably ask the user to provide a file name
-            String fileName = UUID.randomUUID().toString() + ".jpg";
-
-            activity.getContainer().upload(fileName, data, "image/jpeg",
-                new ObjectCallback<File>() {
-                    @Override
-                    public void onSuccess(File remoteFile) {
-                        // Update GUI - add remoteFile to the list of documents
-                    }
-
-                    @Override
-                    public void onError(Throwable error) {
-                        // upload failed
-                    }
-                }
-            );
-        }
-    }
+                    @Override
+                    public void onError(Throwable error) {
+                        // upload failed
+                    }
+                }
+            );
+        }
+    }
 );
 ```
 
-You can find more information in the LoopBack Android SDK <a href="http://docs.strongloop.com/display/DOC/Android+SDK#AndroidSDK-UsingtheLoopBackstorageservice" rel="nofollow">documentation</a>.
-
-## What&#8217;s Next?
-
-- Download the SDK bundle for Eclipse: <a href="http://81b70ddedaf4b27b1592-b5e75689411476c98957e7dab0242f50.r56.cf2.rackcdn.com/loopback-android-1.3.0-eclipse-bundle.zip" rel="nofollow">loopback-android-1.3.0-eclipse-bundle.zip</a>
-- See the <a href="http://docs.strongloop.com/display/LB/Android+SDK" rel="nofollow">Android SDK documentation</a>.
-- Install LoopBack with a <a href="http://strongloop.com/get-started/">simple npm command</a>
+You can find more information in the
+[LoopBack Android SDK documentation](http://docs.strongloop.com/display/DOC/Android+SDK#AndroidSDK-UsingtheLoopBackstorageservice).
