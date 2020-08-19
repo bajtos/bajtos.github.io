@@ -103,12 +103,13 @@ argument providing access to both now.
 Before this change, a sequence class was accepting IoC Context as a constructor
 argument and a pair of request/response objects in the `handle()` method:
 
+<!-- prettier-ignore -->
 ```ts
 class MySequence implements SequenceHandler {
   constructor(
     @inject(RestBindings.Http.CONTEXT) public ctx: Context,
-  ) // inject sequence actions
-  {}
+    // inject sequence actions
+  ) {}
 
   async handle(req: ParsedRequest, res: ServerResponse): Promise<void> {
     // handle the request
@@ -118,10 +119,12 @@ class MySequence implements SequenceHandler {
 
 Now with the single RequestContext object:
 
+<!-- prettier-ignore -->
 ```ts
 class MySequence implements SequenceHandler {
-  constructor() // inject sequence actions
-  {}
+  constructor(
+    // inject sequence actions
+  ) {}
 
   async handle(context: RequestContext): Promise<void> {
     // handle the request
