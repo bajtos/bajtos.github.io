@@ -1,7 +1,5 @@
 MVP:
-- fix formatting in posts imported from StrongLoop Wordpress
-- import posts from Medium.com
-- import posts from StrongLoop (since May)
+- import posts from StrongLoop (since May 2020)
 
 Later:
 - <link rel="manifest" href="/site.webmanifest">
