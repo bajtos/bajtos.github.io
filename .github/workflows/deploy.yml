@@ -33,7 +33,7 @@ jobs:
         git add .
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git commit -m "$msg"
+        if [[ -n $(git status --porcelain -uno) ]]; then git commit -m "$msg"; else echo "no changes to commit"; fi
 
     - name: Push to production
       run: |
