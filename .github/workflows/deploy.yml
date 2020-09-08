@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   push:
-    branches: [ source ]
+    branches: [ main ]
 
 jobs:
   deploy:
@@ -12,10 +12,10 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    - name: Add worktree for the master branch
+    - name: Add worktree for the production branch
       run: |
-        git fetch --no-tags --prune --depth=1 origin +refs/heads/master:refs/remotes/origin/master
-        git worktree add --track -b master master origin/master
+        git fetch --no-tags --prune --depth=1 origin +refs/heads/production:refs/remotes/origin/production
+        git worktree add --track -b production production origin/production
 
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
@@ -23,19 +23,19 @@ jobs:
         hugo-version: '0.70.0'
 
     - name: Build the site
-      run: hugo --minify --destination master
+      run: hugo --minify --destination production
 
     - name: Commit the new site
       run: |
         msg=[deploy]\ `git log -1 --pretty=format:"%s"`
         echo "Commig message: $msg"
-        cd master
+        cd production
         git add .
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git commit -m "$msg"
 
-    - name: Push to master
+    - name: Push to production
       run: |
-        cd master
+        cd production
         git push
