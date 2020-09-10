@@ -1,10 +1,9 @@
-MVP:
-- import posts from StrongLoop (since May 2020)
-
 Later:
+- add "target=_blank" to external links, see
+  https://gohugo.io/getting-started/configuration-markup#markdown-render-hooks
+- setup lazy loading of images
+
 - <link rel="manifest" href="/site.webmanifest">
 - <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
 - change HTML title tag from "Posts" to "Blog posts"
-- add "target=_blank" to external links, see
-  https://gohugo.io/getting-started/configuration-markup#markdown-render-hooks
 - update hugo to the latest version
