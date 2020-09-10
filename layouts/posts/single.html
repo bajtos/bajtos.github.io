@@ -1,13 +1,21 @@
 {{ define "head" }}
 <style>
   .post-meta,
+  .coauthors,
   .origin {
     font-style: italic;
   }
 
+  .coauthors,
   .origin {
     padding-top: 2em;
     text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .coauthors + .origin {
+    padding-top: 0em;
   }
 
   .content p {
@@ -65,11 +73,14 @@
       <div class="content">
         {{ .Content | safeHTML }}
       </div>
+      {{- if .Params.coauthors }}
+      <p class="coauthors">This post was co-authored with {{ delimit .Params.coauthors ", " " and " | safeHTML }}.</p>
+      {{- end}}
       {{- if .Params.originalUrl }}
       {{- with .Params.originalUrl}}
       <p class="origin">Originally published at <a href="{{.}}">{{. | safeHTML }}</a>
-			{{- end }}
-			{{- end }}
+      {{- end }}
+      {{- end }}
     </article>
   </main>
 {{ end }}
