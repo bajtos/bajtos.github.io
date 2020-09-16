@@ -1,5 +1,5 @@
 ---
-title: Enriching LoopBack and its Community - You are Invited!
+title: Enriching LoopBack and its community - you are invited!
 date: 2020-08-27
 originalUrl: https://strongloop.com/strongblog/2020-community-contribution/
 coauthors:

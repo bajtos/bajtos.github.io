@@ -1,5 +1,5 @@
 ---
-title: How We Improved LoopBack REST Performance by 45%
+title: How we improved LoopBack REST performance by 45%
 date: 2020-06-09
 originalUrl: https://strongloop.com/strongblog/2020-improve-looopback-performance-uuid/
 ---
