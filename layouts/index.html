@@ -12,10 +12,30 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
-      body{font-family:Gill Sans,Ubuntu,sans-serif;line-height:175%;padding:2em;text-align:justify}
-      div{padding:1em 0;max-width:30em;margin:0 auto}
-      .byline{color:#a8a7a7;text-align:center}
-      h1{color:#4c4c4c;padding:0;margin:0;font-size:3.5em;text-align:center;line-height:1em}
+      body {
+        font-family: -apple-system,BlinkMacSystemFont,"avenir next",avenir,helvetica,"helvetica neue",ubuntu,roboto,noto,"segoe ui",arial,sans-serif;
+        font-size: 18px;
+        color: #111;
+        line-height: 1.5;
+        padding: 2em;
+        text-align: justify
+      }
+      div{
+        padding: 1em 0;
+        max-width: 30em;
+        margin: 0 auto
+      }
+      .byline{
+        text-align: center;
+      }
+      h1{
+        padding: 0;
+        margin: 0;
+        font-size: 2.25em;
+        font-weight: bold;
+        line-height: 1.2;
+        text-align: center;
+      }
       #avatar {
         background-image: url('./avatar.jpg');
         width: 200px;
@@ -25,12 +45,50 @@
         border-radius: 50%;
         margin-bottom: 2em;
       }
-      #about{text-align:justify}
-      #contact{text-align:center}
+      #about{text-align: justify}
+
+      #contact{
+        margin-top: 2em;
+        text-align: center;
+        padding-bottom: 0;
+      }
       #contact ul{list-style:none;margin:0;padding:0;overflow:hidden}
-      #contact ul li{display:inline;margin:0 1.2em}
-      li svg{width:1.2em;height:1.2em;fill:#a8a7a7;}
-      li svg:hover {fill:#4c4c4c;}
+      #contact ul li{display:inline;margin:0 0.5ch}
+      li svg{width:1.2em;height:1.2em;fill:#111;}
+
+      #nav {
+        margin-top: -1em;
+        margin-bottom: -1em;
+        font-size: 1.2em;
+        line-height: 1.5;
+        text-align: center;
+        color: #111;
+      }
+
+      #nav a {
+        color: #111;
+        text-decoration: none;
+      }
+
+      #nav a:hover,
+      #nav a:focus,
+      #nav a:active {
+        text-decoration: underline;
+      }
+
+      @media (max-height: 750px) {
+        body {
+          padding: 1em;
+        }
+        div {
+          padding-top: 0.5em;
+          padding-bottom: 0.5em;
+        }
+        #avatar {
+          width: 150px;
+          height: 150px;
+        }
+      }
     </style>
 </head>
 <body>
@@ -39,19 +97,25 @@
 
 <div id="about">
   <h1>Miroslav Bajtoš</h1>
-  <p class="byline">Open-Source Software Engineer
+  <p class="byline">Open-Source Software&nbsp;Engineer
   <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="1"><lineargradient id="gradient"><stop offset="0%" style="stop-color:#fff;"></stop><stop offset="50%" style="stop-color:#dadada;"></stop><stop offset="100%" style="stop-color:#fff;"></stop></lineargradient><rect fill="url(#gradient)" x="0" y="0" width="100%" height="100%"></rect></svg>
+</div>
+
+<div id="nav">
+  <a href="/posts">read my blog &raquo;</a>
 </div>
 
 <div id="contact">
 <ul>
-  <li><a href="mailto:hello@bajtos.net"><svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1376 128q119 0 203.5 84.5t84.5 203.5v960q0 119-84.5 203.5t-203.5 84.5h-960q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960zm32 1056v-436q-31 35-64 55-34 22-132.5 85t-151.5 99q-98 69-164 69t-164-69q-46-32-141.5-92.5t-142.5-92.5q-12-8-33-27t-31-27v436q0 40 28 68t68 28h832q40 0 68-28t28-68zm0-573q0-41-27.5-70t-68.5-29h-832q-40 0-68 28t-28 68q0 37 30.5 76.5t67.5 64.5q47 32 137.5 89t129.5 83q3 2 17 11.5t21 14 21 13 23.5 13 21.5 9.5 22.5 7.5 20.5 2.5 20.5-2.5 22.5-7.5 21.5-9.5 23.5-13 21-13 21-14 17-11.5l267-174q35-23 66.5-62.5t31.5-73.5z"></path></svg></a></li>
-  <li><a href="https://keybase.io/bajtos"><svg width="1792" height="1792" viewBox="0 0 448 512"><path d="M286.17 419a18 18 0 1 0 18 18 18 18 0 0 0-18-18zm111.92-147.6c-9.5-14.62-39.37-52.45-87.26-73.71q-9.1-4.06-18.38-7.27a78.43 78.43 0 0 0-47.88-104.13c-12.41-4.1-23.33-6-32.41-5.77-.6-2-1.89-11 9.4-35L198.66 32l-5.48 7.56c-8.69 12.06-16.92 23.55-24.34 34.89a51 51 0 0 0-8.29-1.25c-41.53-2.45-39-2.33-41.06-2.33-50.61 0-50.75 52.12-50.75 45.88l-2.36 36.68c-1.61 27 19.75 50.21 47.63 51.85l8.93.54a214 214 0 0 0-46.29 35.54C14 304.66 14 374 14 429.77v33.64l23.32-29.8a148.6 148.6 0 0 0 14.56 37.56c5.78 10.13 14.87 9.45 19.64 7.33 4.21-1.87 10-6.92 3.75-20.11a178.29 178.29 0 0 1-15.76-53.13l46.82-59.83-24.66 74.11c58.23-42.4 157.38-61.76 236.25-38.59 34.2 10.05 67.45.69 84.74-23.84.72-1 1.2-2.16 1.85-3.22a156.09 156.09 0 0 1 2.8 28.43c0 23.3-3.69 52.93-14.88 81.64-2.52 6.46 1.76 14.5 8.6 15.74 7.42 1.57 15.33-3.1 18.37-11.15C429 443 434 414 434 382.32c0-38.58-13-77.46-35.91-110.92zM142.37 128.58l-15.7-.93-1.39 21.79 13.13.78a93 93 0 0 0 .32 19.57l-22.38-1.34a12.28 12.28 0 0 1-11.76-12.79L107 119c1-12.17 13.87-11.27 13.26-11.32l29.11 1.73a144.35 144.35 0 0 0-7 19.17zm148.42 172.18a10.51 10.51 0 0 1-14.35-1.39l-9.68-11.49-34.42 27a8.09 8.09 0 0 1-11.13-1.08l-15.78-18.64a7.38 7.38 0 0 1 1.34-10.34l34.57-27.18-14.14-16.74-17.09 13.45a7.75 7.75 0 0 1-10.59-1s-3.72-4.42-3.8-4.53a7.38 7.38 0 0 1 1.37-10.34L214 225.19s-18.51-22-18.6-22.14a9.56 9.56 0 0 1 1.74-13.42 10.38 10.38 0 0 1 14.3 1.37l81.09 96.32a9.58 9.58 0 0 1-1.74 13.44zM187.44 419a18 18 0 1 0 18 18 18 18 0 0 0-18-18z"/></svg></a></li>
-  <li><a href="https://github.com/bajtos"><svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M522 1352q-8 9-20-3-13-11-4-19 8-9 20 3 12 11 4 19zm-42-61q9 12 0 19-8 6-17-7t0-18q9-7 17 6zm-61-60q-5 7-13 2-10-5-7-12 3-5 13-2 10 5 7 12zm31 34q-6 7-16-3-9-11-2-16 6-6 16 3 9 11 2 16zm129 112q-4 12-19 6-17-4-13-15t19-7q16 5 13 16zm63 5q0 11-16 11-17 2-17-11 0-11 16-11 17-2 17 11zm58-10q2 10-14 14t-18-8 14-15q16-2 18 9zm964-956v960q0 119-84.5 203.5t-203.5 84.5h-224q-16 0-24.5-1t-19.5-5-16-14.5-5-27.5v-239q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 103t.5 68q0 22-11 33.5t-22 13-33 1.5h-224q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z"></path></svg></a></li>
-    <li><a href="https://stackoverflow.com/users/69868"><svg width="1792" height="1792" viewBox="0 0 384 512"><path d="M290.7 311L95 269.7 86.8 309l195.7 41zm51-87L188.2 95.7l-25.5 30.8 153.5 128.3zm-31.2 39.7L129.2 179l-16.7 36.5L293.7 300zM262 32l-32 24 119.3 160.3 32-24zm20.5 328h-200v39.7h200zm39.7 80H42.7V320h-40v160h359.5V320h-40z"/></svg></a></li>
-  <li><a href="http://cz.linkedin.com/in/bajtos/"><svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M365 1414h231v-694h-231v694zm246-908q-1-52-36-86t-93-34-94.5 34-36.5 86q0 51 35.5 85.5t92.5 34.5h1q59 0 95-34.5t36-85.5zm585 908h231v-398q0-154-73-233t-193-79q-136 0-209 117h2v-101h-231q3 66 0 694h231v-388q0-38 7-56 15-35 45-59.5t74-24.5q116 0 116 157v371zm468-998v960q0 119-84.5 203.5t-203.5 84.5h-960q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z"></path></svg></a></li>
-  <li><a href="https://mastodon.social/@bajtos"><svg width="1792" height="1792" viewBox="0 0 448 512"><path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"/></svg></a>
-  <li><a href="https://twitter.com/bajtos"><svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1408 610q-56 25-121 34 68-40 93-117-65 38-134 51-61-66-153-66-87 0-148.5 61.5t-61.5 148.5q0 29 5 48-129-7-242-65t-192-155q-29 50-29 106 0 114 91 175-47-1-100-26v2q0 75 50 133.5t123 72.5q-29 8-51 8-13 0-39-4 21 63 74.5 104t121.5 42q-116 90-261 90-26 0-50-3 148 94 322 94 112 0 210-35.5t168-95 120.5-137 75-162 24.5-168.5q0-18-1-27 63-45 105-109zm256-194v960q0 119-84.5 203.5t-203.5 84.5h-960q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z"></path></svg></a>
+  <li><a href="https://mastodon.social/@bajtos">{{- partial "svg.html" "mastodon" }}</a>
+  <li><a href="https://twitter.com/bajtos">{{- partial "svg.html" "twitter" }}</a>
+  <li><a href="mailto:hello@bajtos.net">{{- partial "svg.html" "email" }}</a>
+  <li><a href="https://keybase.io/bajtos">{{- partial "svg.html" "keybase" }}</a>
+  <li><a href="https://github.com/bajtos">{{- partial "svg.html" "github" }}</a>
+  <li><a href="https://stackoverflow.com/users/69868">{{- partial "svg.html" "stackoverflow" }}</a>
+  <li><a href="http://cz.linkedin.com/in/bajtos/">{{- partial "svg.html" "linkedin" }}</a>
 </li>
-</ul></div>
+</ul>
+</div>
+
 </body></html>
