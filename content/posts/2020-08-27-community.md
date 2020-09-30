@@ -24,7 +24,7 @@ improving documentation.
 
 <!--more-->
 
-## A Short History of LoopBack 4
+## A Short History of LoopBack&nbsp;4
 
 As we started the rewrite of LoopBack from ground up back in early 2017 (see the
 [kick-off post](https://strongloop.com/strongblog/announcing-loopback-next/)),
