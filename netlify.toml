@@ -21,7 +21,6 @@ HUGO_VERSION = "0.78.2"
 [[redirects]]
   from = "/gh/*"
   to = "https://bajtos.github.io/:splat"
-  status = 200
 
 [[redirects]]
   from = "/PyQ"
