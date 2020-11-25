@@ -15,5 +15,5 @@ HUGO_VERSION = "0.78.2"
 
 [[redirects]]
   from = "/stats/*"
-  to = "https://stats.bajtos.net/:splat"
+  to = "https://s.bajtos.net/:splat"
   status = 200
