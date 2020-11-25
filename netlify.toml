@@ -12,3 +12,8 @@ command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
 
 [context.deploy-preview.environment]
 HUGO_VERSION = "0.78.2"
+
+[[redirects]]
+  from = "/stats/*"
+  to = "https://stats.bajtos.net/:splat"
+  status = 200
