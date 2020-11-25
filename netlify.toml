@@ -17,3 +17,23 @@ HUGO_VERSION = "0.78.2"
   from = "/stats/*"
   to = "https://s.bajtos.net/:splat"
   status = 200
+
+[[redirects]]
+  from = "/gh/*"
+  to = "https://bajtos.github.io/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/PyQ"
+  to = "/gh/2019-QuantumPython"
+  status = 302
+
+[[redirects]]
+  from = "/Q"
+  to = "/gh/2019-QuantumIntro"
+  status = 302
+
+[[redirects]]
+  from = "/T"
+  to = "/gh/2018-AsyncAwait"
+  status = 302
