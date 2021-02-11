@@ -113,4 +113,10 @@
     font-weight: normal;
     font-size: 1.5em;
   }
+
+  /* home-grown analytics */
+  body::after {
+    content: " ";
+    background-image: url('/.netlify/functions/hello');
+  }
 </style>

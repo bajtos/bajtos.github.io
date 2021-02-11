@@ -2,8 +2,9 @@ Later:
 - add "target=_blank" to external links, see
   https://gohugo.io/getting-started/configuration-markup#markdown-render-hooks
 - setup lazy loading of images
+- home page: add more space between icons on wide displays
 
 - <link rel="manifest" href="/site.webmanifest">
 - <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
 - change HTML title tag from "Posts" to "Blog posts"
-- update hugo to the latest version
+- improve SEO metadata (Lighthouse score)
