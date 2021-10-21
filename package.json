@@ -18,5 +18,8 @@
   "homepage": "https://github.com/bajtos/bajtos.github.io#readme",
   "dependencies": {
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "netlify-cli": "^6.14.0"
   }
 }
