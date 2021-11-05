@@ -14,11 +14,30 @@ command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
 [context.deploy-preview.environment]
 HUGO_VERSION = "0.78.2"
 
+#
+# Home-grown analytics
+#
 [[redirects]]
   from = "/stats/*"
   to = "https://s.bajtos.net/:splat"
   status = 200
 
+#
+# Plausible Analytics
+#
+[[redirects]]
+  from = "/s/main.js"
+  to = "https://plausible.io/js/plausible.js"
+  status = 200
+
+[[redirects]]
+  from = "/s/event"
+  to = "https://plausible.io/api/event"
+  status = 202
+
+#
+# URL-shortening
+#
 [[redirects]]
   from = "/gh/*"
   to = "https://bajtos.github.io/:splat"
