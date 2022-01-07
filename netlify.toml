@@ -15,14 +15,6 @@ command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
 HUGO_VERSION = "0.78.2"
 
 #
-# Home-grown analytics
-#
-[[redirects]]
-  from = "/stats/*"
-  to = "https://s.bajtos.net/:splat"
-  status = 200
-
-#
 # Plausible Analytics
 #
 [[redirects]]
