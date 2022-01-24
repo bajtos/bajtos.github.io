@@ -55,3 +55,8 @@ HUGO_VERSION = "0.78.2"
   from = "/T"
   to = "/gh/2018-AsyncAwait"
   status = 302
+
+[[redirects]]
+  from = "/M"
+  to = "/gh/2022-modernize-backend-stack"
+  status = 302
