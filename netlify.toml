@@ -60,3 +60,8 @@ HUGO_VERSION = "0.78.2"
   from = "/M"
   to = "/gh/2022-modernize-backend-stack"
   status = 302
+
+[[redirects]]
+  from = "/C"
+  to = "/gh/2022-hold-my-context"
+  status = 302
