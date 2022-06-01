@@ -10,7 +10,7 @@ about different ways how to package your code and dependencies.
 
 TL;DR: After trying several different options, I ended with esbuild. Despite
 some shortcomings, it seems to be the most popular choice nowadays. 🤷🏻‍♂️ Jump to
-the [esbuild section](#giving-up-and-adopting-eslint) if you are looking for
+the [esbuild section](#giving-up-and-adopting-esbuild) if you are looking for
 details on how to configure your Pulumi project to bundle Lambda handlers using
 esbuild.
 
@@ -323,7 +323,7 @@ dependencies to my lambda. Looking at you,
 allowed size for Lambda code, and it was again time to look for yet another
 solution.
 
-## Giving up and adopting eslint
+## Giving up and adopting esbuild
 
 At this point, I gave up. I decided to follow what others are doing and adopt
 [esbuild](https://esbuild.github.io). I am not happy that I am running a
