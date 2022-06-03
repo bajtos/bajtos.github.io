@@ -39,8 +39,7 @@ implemented tracking:
    own domain: [/s/main.js](/s/main.js). Under the hood, Netlify handles this
    endpoint by fetching the response from Plausible.
 2. I configured the Plausible client to post events to an URL on my own domain
-   too: [/s/event](/s/event). This endpoint is again proxied by Netlify to
-   Plausible.
+   too: `/s/event`. This endpoint is again proxied by Netlify to Plausible.
 3. Finally, I have a small script to detect Netlify preview domains and tell the
    Plausible client to report a different domain name to the data collector.
 
