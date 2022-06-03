@@ -1,0 +1,27 @@
+{{ define "head" }}
+<style>
+  ul {
+    list-style-type: square;
+  }
+</style>
+{{- end }}
+
+{{ define "header" }}
+{{ partialCached "header.html" . }}
+{{ end }}
+
+{{ define "main" }}
+<main>
+  <h1>404 Not Found </h1>
+  <p>The page you are looking for was not found.</p>
+  <p>Return back:
+    <ul>
+      <li><a href="/posts">List of all posts</a>
+      <li><a href="{{ "/" | relURL }}">Home page</a>
+    </ul>
+</main>
+{{ end }}
+
+{{ define "footer" }}
+{{ partialCached "footer.html" . }}
+{{ end }}
