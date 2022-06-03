@@ -18,10 +18,10 @@ is battle-tested by years of production use.
 While discussing the new direction, we thought it would be great to support
 multiple different HTTP frameworks like Express and Koa and implement a thin
 integration layer to allow mounting of LoopBack 4 REST router.
-[Raymond](/authors/Raymond_Feng/) researched this approach in a spike pull
-request [#1082](https://github.com/strongloop/loopback-next/pull/1082). Later
-on, [Yaapa](/authors/Hage_Yaapa/) looked into practical implications of the
-proposed approach and discovered that Express and Koa are fundamentally
+[Raymond](https://github.com/raymondfeng) researched this approach in a spike
+pull request [#1082](https://github.com/strongloop/loopback-next/pull/1082).
+Later on, [Yaapa](https://github.com/hacksparrow) looked into practical implications of
+the proposed approach and discovered that Express and Koa are fundamentally
 incompatible at such level that it's impossible to write a a single
 middleware/route function that would work with both frameworks. That left us
 with a difficult decision to make: going forward, should we pick Express or Koa
