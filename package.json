@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/bajtos/bajtos.github.io#readme",
   "dependencies": {
+    "prettier": "^3.1.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
