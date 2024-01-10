@@ -12,7 +12,7 @@ HUGO_ENABLEGITINFO = "true"
 command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
 
 [context.deploy-preview.environment]
-HUGO_VERSION = "0.78.2"
+HUGO_VERSION = "0.90.1"
 
 [[headers]]
   for = "/*"
