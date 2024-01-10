@@ -60,13 +60,13 @@ itself. 🤨
 > directory. (…) Connect the USB flash to the Turris Omnia router and use reset
 > button to select mode 4 (4 LEDs).
 
-4\. Wait until the operation completes and the router starts.
+4. Wait until the operation completes and the router starts.
 
-5\. Connect to your router via LAN cable, open the administrative interface at
+5. Connect to your router via LAN cable, open the administrative interface at
 [http://192.168.1.1/](http://192.168.1.1/) and follow the Guided Mode to
 manually restore your router config.
 
-6\. If you are tweaking advanced settings, open also LuCI to make the necessary
+6. If you are tweaking advanced settings, open also LuCI to make the necessary
 changes there.
 
 As far as I can tell so far, the 4.x configuration UI looks pretty much the same
