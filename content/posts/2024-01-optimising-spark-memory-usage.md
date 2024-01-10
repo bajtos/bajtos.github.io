@@ -1,6 +1,6 @@
 ---
 title: How we reduced memory usage by 90%
-date: 2023-12-14
+date: 2024-01-11
 ---
 
 ## TL;DR
