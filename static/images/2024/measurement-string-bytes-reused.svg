@@ -1,0 +1,89 @@
+<svg version="1.1"
+  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 566 300" width="566" height="300">
+  <!-- svg-source:excalidraw -->
+
+  <defs>
+    <style class="style-fonts">
+      @font-face {
+        font-family: "Virgil";
+        src: url("https://excalidraw.com/Virgil.woff2");
+      }
+      @font-face {
+        font-family: "Cascadia";
+        src: url("https://excalidraw.com/Cascadia.woff2");
+      }
+      @font-face {
+        font-family: "Assistant";
+        src: url("https://excalidraw.com/Assistant-Regular.woff2");
+      }
+    </style>
+
+  </defs>
+  <rect x="0" y="0" width="566.5" height="300.9" fill="#ffffff"></rect>
+  <g stroke-linecap="round" transform="translate(25.770004272460938 64.30000000000001) rotate(0 87.5 34)">
+    <path d="M0 0 C57.24 0, 114.47 0, 175 0 M0 0 C62.09 0, 124.18 0, 175 0 M175 0 C175 22.21, 175 44.41, 175 68 M175 0 C175 18.03, 175 36.05, 175 68 M175 68 C114.66 68, 54.32 68, 0 68 M175 68 C125.81 68, 76.62 68, 0 68 M0 68 C0 44.69, 0 21.38, 0 0 M0 68 C0 43.69, 0 19.39, 0 0" stroke="#1e1e1e" stroke-width="2" fill="none"></path>
+  </g>
+  <g transform="translate(30.770004272460938 69.30000000000001) rotate(0 37.5 28.799999999999997)">
+    <text x="0" y="0" font-family="Cascadia, Segoe UI Emoji" font-size="16px" fill="#1e1e1e" text-anchor="start" style="white-space: pre;" direction="ltr" dominant-baseline="text-before-edge">cid</text>
+    <text x="0" y="19.2" font-family="Cascadia, Segoe UI Emoji" font-size="16px" fill="#1e1e1e" text-anchor="start" style="white-space: pre;" direction="ltr" dominant-baseline="text-before-edge">protocol</text>
+    <text x="0" y="38.4" font-family="Cascadia, Segoe UI Emoji" font-size="16px" fill="#1e1e1e" text-anchor="start" style="white-space: pre;" direction="ltr" dominant-baseline="text-before-edge">(...)</text>
+  </g>
+  <g transform="translate(10 14) rotate(0 103.27000427246094 12.5)">
+    <text x="0" y="0" font-family="Virgil, Segoe UI Emoji" font-size="20px" fill="#1e1e1e" text-anchor="start" style="white-space: pre;" direction="ltr" dominant-baseline="text-before-edge">Measurement objects</text>
+  </g>
+  <g stroke-linecap="round" transform="translate(25.770004272460938 145.25) rotate(0 87.5 34)">
+    <path d="M0 0 C56.25 0, 112.49 0, 175 0 M0 0 C55.75 0, 111.5 0, 175 0 M175 0 C175 14.99, 175 29.98, 175 68 M175 0 C175 21.85, 175 43.7, 175 68 M175 68 C116.84 68, 58.69 68, 0 68 M175 68 C134.86 68, 94.71 68, 0 68 M0 68 C0 45.52, 0 23.03, 0 0 M0 68 C0 48.62, 0 29.25, 0 0" stroke="#1e1e1e" stroke-width="2" fill="none"></path>
+  </g>
+  <g transform="translate(30.770004272460938 150.25) rotate(0 37.5 28.80000000000001)">
+    <text x="0" y="0" font-family="Cascadia, Segoe UI Emoji" font-size="16px" fill="#1e1e1e" text-anchor="start" style="white-space: pre;" direction="ltr" dominant-baseline="text-before-edge">cid</text>
+    <text x="0" y="19.2" font-family="Cascadia, Segoe UI Emoji" font-size="16px" fill="#1e1e1e" text-anchor="start" style="white-space: pre;" direction="ltr" dominant-baseline="text-before-edge">protocol</text>
+    <text x="0" y="38.4" font-family="Cascadia, Segoe UI Emoji" font-size="16px" fill="#1e1e1e" text-anchor="start" style="white-space: pre;" direction="ltr" dominant-baseline="text-before-edge">(...)</text>
+  </g>
+  <g stroke-linecap="round" transform="translate(25.770004272460938 222.89999999999998) rotate(0 87.5 34)">
+    <path d="M0 0 C66.16 0, 132.33 0, 175 0 M0 0 C66.17 0, 132.34 0, 175 0 M175 0 C175 22.26, 175 44.52, 175 68 M175 0 C175 23.35, 175 46.7, 175 68 M175 68 C133.22 68, 91.44 68, 0 68 M175 68 C116.02 68, 57.03 68, 0 68 M0 68 C0 51.75, 0 35.5, 0 0 M0 68 C0 47.59, 0 27.18, 0 0" stroke="#1e1e1e" stroke-width="2" fill="none"></path>
+  </g>
+  <g transform="translate(30.770004272460938 227.89999999999998) rotate(0 37.5 28.80000000000001)">
+    <text x="0" y="0" font-family="Cascadia, Segoe UI Emoji" font-size="16px" fill="#1e1e1e" text-anchor="start" style="white-space: pre;" direction="ltr" dominant-baseline="text-before-edge">cid</text>
+    <text x="0" y="19.2" font-family="Cascadia, Segoe UI Emoji" font-size="16px" fill="#1e1e1e" text-anchor="start" style="white-space: pre;" direction="ltr" dominant-baseline="text-before-edge">protocol</text>
+    <text x="0" y="38.4" font-family="Cascadia, Segoe UI Emoji" font-size="16px" fill="#1e1e1e" text-anchor="start" style="white-space: pre;" direction="ltr" dominant-baseline="text-before-edge">(...)</text>
+  </g>
+  <g transform="translate(352.7799949645996 10) rotate(0 59.22000503540039 12.5)">
+    <text x="0" y="0" font-family="Virgil, Segoe UI Emoji" font-size="20px" fill="#1e1e1e" text-anchor="start" style="white-space: pre;" direction="ltr" dominant-baseline="text-before-edge">String bytes</text>
+  </g>
+  <g stroke-linecap="round" transform="translate(267.5 144.25) rotate(0 144.5 14.599999999999994)">
+    <path d="M0 0 C60.32 0, 120.65 0, 289 0 M0 0 C78.94 0, 157.88 0, 289 0 M289 0 C289 10.72, 289 21.43, 289 29.2 M289 0 C289 9.82, 289 19.64, 289 29.2 M289 29.2 C187.54 29.2, 86.08 29.2, 0 29.2 M289 29.2 C174.95 29.2, 60.9 29.2, 0 29.2 M0 29.2 C0 17.66, 0 6.11, 0 0 M0 29.2 C0 19.44, 0 9.68, 0 0" stroke="#1e1e1e" stroke-width="2" fill="none"></path>
+  </g>
+  <g transform="translate(272.5 149.25) rotate(0 37.5 9.599999999999994)">
+    <text x="0" y="0" font-family="Cascadia, Segoe UI Emoji" font-size="16px" fill="#1e1e1e" text-anchor="start" style="white-space: pre;" direction="ltr" dominant-baseline="text-before-edge">bafy1...</text>
+  </g>
+  <g stroke-linecap="round">
+    <g transform="translate(72.5 79.5) rotate(0 96.5 30.21331442035131)">
+      <path d="M0 0 C47.83 14.98, 95.67 29.95, 193 60.43 M0 0 C59.89 18.75, 119.78 37.5, 193 60.43" stroke="#1e1e1e" stroke-width="2" fill="none"></path>
+    </g>
+    <g transform="translate(72.5 79.5) rotate(0 96.5 30.21331442035131)">
+      <path d="M193 60.43 L178.13 62.41 L181.92 50.32 L193 60.43" stroke="none" stroke-width="0" fill="#1e1e1e" fill-rule="evenodd"></path>
+      <path d="M193 60.43 C189.32 60.92, 185.63 61.41, 178.13 62.41 M193 60.43 C188.39 61.04, 183.77 61.66, 178.13 62.41 M178.13 62.41 C179.09 59.36, 180.05 56.3, 181.92 50.32 M178.13 62.41 C179.55 57.9, 180.96 53.38, 181.92 50.32 M181.92 50.32 C184.45 52.63, 186.99 54.94, 193 60.43 M181.92 50.32 C185.29 53.39, 188.66 56.47, 193 60.43 M193 60.43 C193 60.43, 193 60.43, 193 60.43 M193 60.43 C193 60.43, 193 60.43, 193 60.43" stroke="#1e1e1e" stroke-width="2" fill="none"></path>
+    </g>
+  </g>
+  <mask></mask>
+  <g stroke-linecap="round">
+    <g transform="translate(72 160.5) rotate(0 96 -0.7891815314046369)">
+      <path d="M0 0 C62.78 -0.52, 125.57 -1.03, 192 -1.58 M0 0 C38.7 -0.32, 77.4 -0.64, 192 -1.58" stroke="#1e1e1e" stroke-width="2" fill="none"></path>
+    </g>
+    <g transform="translate(72 160.5) rotate(0 96 -0.7891815314046369)">
+      <path d="M192 -1.58 L178.46 4.87 L178.35 -7.81 L192 -1.58" stroke="none" stroke-width="0" fill="#1e1e1e" fill-rule="evenodd"></path>
+      <path d="M192 -1.58 C187.57 0.53, 183.14 2.64, 178.46 4.87 M192 -1.58 C189.27 -0.28, 186.54 1.02, 178.46 4.87 M178.46 4.87 C178.43 1.85, 178.41 -1.18, 178.35 -7.81 M178.46 4.87 C178.42 0.47, 178.39 -3.93, 178.35 -7.81 M178.35 -7.81 C182.41 -5.96, 186.46 -4.1, 192 -1.58 M178.35 -7.81 C181.82 -6.22, 185.28 -4.64, 192 -1.58 M192 -1.58 C192 -1.58, 192 -1.58, 192 -1.58 M192 -1.58 C192 -1.58, 192 -1.58, 192 -1.58" stroke="#1e1e1e" stroke-width="2" fill="none"></path>
+    </g>
+  </g>
+  <mask></mask>
+  <g stroke-linecap="round">
+    <g transform="translate(72 238.5) rotate(0 96 -31)">
+      <path d="M0 0 C45.14 -14.58, 90.27 -29.15, 192 -62 M0 0 C57.18 -18.46, 114.35 -36.93, 192 -62" stroke="#1e1e1e" stroke-width="2" fill="none"></path>
+    </g>
+    <g transform="translate(72 238.5) rotate(0 96 -31)">
+      <path d="M192 -62 L181.01 -51.79 L177.12 -63.86 L192 -62" stroke="none" stroke-width="0" fill="#1e1e1e" fill-rule="evenodd"></path>
+      <path d="M192 -62 C189.42 -59.6, 186.83 -57.2, 181.01 -51.79 M192 -62 C188.73 -58.96, 185.46 -55.92, 181.01 -51.79 M181.01 -51.79 C179.46 -56.61, 177.9 -61.42, 177.12 -63.86 M181.01 -51.79 C179.53 -56.38, 178.05 -60.97, 177.12 -63.86 M177.12 -63.86 C181.59 -63.3, 186.07 -62.74, 192 -62 M177.12 -63.86 C182.93 -63.13, 188.74 -62.41, 192 -62 M192 -62 C192 -62, 192 -62, 192 -62 M192 -62 C192 -62, 192 -62, 192 -62" stroke="#1e1e1e" stroke-width="2" fill="none"></path>
+    </g>
+  </g>
+  <mask></mask>
+</svg>

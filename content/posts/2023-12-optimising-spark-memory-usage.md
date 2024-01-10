@@ -5,30 +5,23 @@ date: 2023-12-14
 
 ## TL;DR
 
-- Convert plain data object to class instances.
+- Convert plain data objects to class instances.
 - De-duplicate immutable string values.
 - Store timestamps as numbers.
-- Choose carefully how you calculate percentiles.
+- Carefully choose how you calculate percentiles.
 
 ## Introduction
 
 After I finished [optimizing our database usage](../2023-11-optimising-spark-db-perf), another
-problem came to our attention: the spark-evaluate service was consuming too much memory. Before I
-describe our change, let me explain what this service does.
-
-SPARK operates in rounds; each round takes approximately 1 hour in the current configuration. During
-the round, SPARK checker nodes running in Stations perform retrieval checks and submit the results -
-we call these records _measurements_. After a round is over, the evaluation service processes these
-measurements to evaluate the impact of each node (each participant). The Meridian smart contract
-uses the outcome of this evaluation to schedule rewards for node operators. You can learn more about
-Meridian on GitHub: https://github.com/Meridian-IE/impact-evaluator
+problem came to our attention: the spark-evaluate service was consuming too much memory. This
+service periodically processes a large batch of records (measurements).
 
 Here comes the issue: as the Station node network grows, so does the number of measurements
-submitted each round. Last week, we were evaluating more than 500 thousand measurements per round.
-Each measurement has around 600 bytes; we had to process 300MB of raw data every round.
+submitted each round. In early December 2023, we were evaluating more than 1.5 million measurements
+every round. Each measurement had around 600 bytes; we had to process 900MB of raw data every round.
 
 We implemented spark-evaluate to keep all data in memory because it was the fastest way to ship a
-working version. As we watched the network grow, every now and then we would receive an email from
+working version. As we watched the network grow, every now and then, we would receive an email from
 Fly.io that spark-evaluate crashed on an "out of memory" error. In the current stage, cloud
 resources are cheaper than engineering efforts, so we fixed these incidents by doubling the memory
 size of the virtual machine running the service. When we reached the point of 8 GB of RAM not being
@@ -128,7 +121,9 @@ submitted per round, there are, on average, 10,000 measurements for the same CID
 
 Here comes the question: how does V8 (the JavaScript runtime in Node.js) represent strings? If two
 object properties hold the same string value, how many copies of the string's bytes are stored in
-the memory? The answer seems to be "two copies".
+the memory? The answer seems to be two copies.
+
+![Measurements and CID strings with duplicated bytes](/images/2024/measurement-string-bytes-duplicated.svg)
 
 Aside: I guess this makes sense - most applications don't have that many duplicate string values.
 The cost of maintaining a lookup table would outweigh the benefits.
@@ -137,6 +132,8 @@ Using the knowledge about the specific usage patterns of our application, we can
 CPU load for less memory usage and implement a lookup table ourselves. The idea is simple: whenever
 we encounter a new string coming from the parsed JSON data, check if we have seen it before. If yes,
 replace the new string value with a pointer to the same string we have seen before.
+
+![Measurements and CID strings reusing the same bytes](/images/2024/measurement-string-bytes-reused.svg)
 
 This solution has one fantastic property: we don't need to change any code reading the measurement
 objects; only the ingestion part needs changing.
@@ -192,13 +189,13 @@ between zero to hundreds of million.
 
 Anyway, this is what I saw in our logs:
 
-- For many rounds, the histogram module was throwing an error while adding more data points.
+- For many rounds, the histogram module threw an error while adding more data points.
 - Often, the values at percentiles were inaccurate. For example, "CAR size in bytes" at p5 and p10
   was zero.
 
 Instead of debugging the library, I decided to calculate the histogram ourselves. If we can fit all
 measurements in memory, we can surely keep in memory an array of all values for an individual
-measurement field like "CAR size in bytes" or "TTFB", too.
+measurement field like "CAR size in bytes" or "TTFB," too.
 
 Calculating values at a given percentile is easy when we have all data points in memory:
 
@@ -252,6 +249,11 @@ increase in heap usage.
 You can learn more in the following pull requests:
 [filecoin-station/spark-evaluate#88](https://github.com/filecoin-station/spark-evaluate/pull/88) and
 [filecoin-station/spark-evaluate#89](https://github.com/filecoin-station/spark-evaluate/pull/89).
+
+Note: While revisiting this blog post, I performed another search on npmjs.com and found a package
+that provides the same functionality:
+[just-percentile](https://www.npmjs.com/package/just-percentile). I'll use it the next time I need
+to calculate percentiles.
 
 ## Timestamps
 
