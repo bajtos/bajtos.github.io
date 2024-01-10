@@ -1,14 +1,17 @@
 ---
-title: How we reduced Spark's memory usage by 90%
+title: How we reduced memory usage by 90%
 date: 2023-12-14
 ---
 
 ## TL;DR
 
-- Convert plain data objects to class instances.
-- De-duplicate immutable string values.
-- Store timestamps as numbers.
-- Carefully choose how you calculate percentiles.
+Four easy changes reduced the total memory usage of [Spark](https://filspark.com)'s Node.js backend
+from 4+ GB to ~360 MB:
+
+- [Convert plain data objects to class instances.](#plain-data-objects)
+- [De-duplicate immutable string values.](#duplicate-string-values)
+- [Carefully choose how you calculate percentiles.](#external-memory-and-hdr-histogram-js)
+- [Represent timestamps as numbers.](#timestamps)
 
 ## Introduction
 
@@ -18,7 +21,7 @@ service periodically processes a large batch of records (measurements).
 
 Here comes the issue: as the Station node network grows, so does the number of measurements
 submitted each round. In early December 2023, we were evaluating more than 1.5 million measurements
-every round. Each measurement had around 600 bytes; we had to process 900MB of raw data every round.
+every round. Each measurement had around 600 bytes; we had to process 900MB of raw data at once.
 
 We implemented spark-evaluate to keep all data in memory because it was the fastest way to ship a
 working version. As we watched the network grow, every now and then, we would receive an email from
@@ -29,16 +32,17 @@ enough, we decided the situation was no longer sustainable, and the time came to
 work.
 
 Fortunately, we found a small number of easy changes that significantly reduced our memory usage
-without any major changes in the implementation (like offloading the data from memory to the
-filesystem).
+without any major changes in the implementation, such as offloading the data from memory to the
+filesystem.
 
 ## Plain data objects
 
-My colleague [Julian Gruber](https://github.com/juliangruber) discovered the first low-hanging
-fruit: apparently, plain data objects take more memory than class instances.
+_Spoiler: this change reduced our memory usage by 50%!_ 😳
 
-Adding a step to map objects parsed from JSON to instances of a newly introduced `Measurement` class
-reduced our memory usage by 50%.
+My colleague [Julian Gruber](https://github.com/juliangruber) discovered the first low-hanging
+fruit: apparently, plain data objects take more memory than class instances. Adding a step to map
+objects parsed from JSON to instances of a newly introduced `Measurement` class reduced our memory
+usage by 50%.
 
 The original version parsed measurements from JSON and then stored these objects for future
 evaluations.
@@ -79,7 +83,9 @@ you are interested in more details.
 
 ## Duplicate string values
 
-This first improvement sparked my interest. What other easy optimizations we can make?
+_Spoiler: this change reduced heap usage from 570 MB to 167 MB._
+
+This first improvement sparked my interest. What other easy optimizations can we make?
 
 Let's take a look at an example measurement:
 
@@ -99,25 +105,16 @@ Let's take a look at an example measurement:
   "attestation": null,
   "inet_group": "uWJAEcUyzouo",
   "car_too_large": false,
-  "cid": "bafybeice7venemgas2vijqc6xfdf6zequrxziajapm2j6hxckeu6fimjwa",
-  "provider_address": "/ip4/207.189.112.60/tcp/26197/http",
+  "cid": "QmU4P3dfgDHUJ8GUREND2p3hH6T7hsQiPL9NrHs5T86NAp",
+  "provider_address": "/ip4/127.0.0.1/tcp/8080/http",
   "protocol": "http"
 }
 ```
 
-Setting aside timestamps, the following properties store a string value:
-
-- `spark_version` contains the version of the SPARK node that performed the retrieval.
-- `zinnia_version` is a field we ignore now; we don't keep it in `Measurement` instances.
-- `participant_address` contains the Station's wallet address in ETH format.
-- `inet_group` is an anonymous id of the IPv4 /24 subnet from which the measurement was submitted.
-- `cid` is the identifier of the content that the node attempted to retrieve.
-- `provider_address` is the address of the Storage Provider.
-- `protocol` is either `http`, `bitswap`, or `graphsync`.
-
-There is only a small number of possible values; each value is repeated many times in different
-measurements. For example, we pick 4000 different CIDs to test every round. With 100k measurements
-submitted per round, there are, on average, 10,000 measurements for the same CID.
+Setting aside timestamps, most of the string properties can contain only a small number of possible
+values; each value is repeated many times in different measurements. For example, we pick 4000
+different CIDs to test every round. With 100k measurements submitted per round, there are, on
+average, 10,000 measurements for the same CID.
 
 Here comes the question: how does V8 (the JavaScript runtime in Node.js) represent strings? If two
 object properties hold the same string value, how many copies of the string's bytes are stored in
@@ -126,7 +123,7 @@ the memory? The answer seems to be two copies.
 ![Measurements and CID strings with duplicated bytes](/images/2024/measurement-string-bytes-duplicated.svg)
 
 Aside: I guess this makes sense - most applications don't have that many duplicate string values.
-The cost of maintaining a lookup table would outweigh the benefits.
+The cost of maintaining a lookup table would outweigh the benefits of memory savings.
 
 Using the knowledge about the specific usage patterns of our application, we can trade additional
 CPU load for less memory usage and implement a lookup table ourselves. The idea is simple: whenever
@@ -136,9 +133,8 @@ replace the new string value with a pointer to the same string we have seen befo
 ![Measurements and CID strings reusing the same bytes](/images/2024/measurement-string-bytes-reused.svg)
 
 This solution has one fantastic property: we don't need to change any code reading the measurement
-objects; only the ingestion part needs changing.
-
-But, there is also an essential requirement: we must never mutate these string values.
+objects; only the ingestion part needs changing. But, there is also an essential requirement: we
+must never mutate these string values.
 
 Here is a code snippet illustrating the algorithm:
 
@@ -161,12 +157,12 @@ this.protocol = pointerize(m.protocol);
 ```
 
 This change reduced our memory usage from 70% - the `heapTotal` metric went down from 570 MB to 167
-MB.
-
-You can find more details in the pull request
+MB. You can find more details in the pull request
 [filecoin-station/spark-evaluate#86](https://github.com/filecoin-station/spark-evaluate/pull/84).
 
 ## External memory and `hdr-histogram-js`
+
+_Spoiler: this change reduced our total memory usage (`rss`) from 3,526 MB to 375 MB._
 
 I stumbled across this opportunity by a lucky coincidence. After evaluating all measurements, we
 calculate various statistics about the round and submit them to InfluxDB for visualization. For some
@@ -202,7 +198,7 @@ Calculating values at a given percentile is easy when we have all data points in
 1. Sort the array by values.
 
    _Remember to provide a custom comparator function because JavaScript sorts lexicographically by
-   default: `10` comes before `2`!_
+   default: the word **10** comes before the word **2**!_
 
 2. Calculate the value at the percentile `p` as the array item at position
    `Math.ceil(p * count / 100)`.
@@ -244,9 +240,7 @@ export const getValueAtPercentile = (values, p) => {
 
 Replacing `hdr-histogram-js` with my in-house implementation reduced our total memory usage (`rss`)
 from 3,526 MB to 375 MB — trading 3 GB of external memory used by `hdr-histogram-js` for a 90 MB
-increase in heap usage.
-
-You can learn more in the following pull requests:
+increase in heap usage. You can learn more in the following pull requests:
 [filecoin-station/spark-evaluate#88](https://github.com/filecoin-station/spark-evaluate/pull/88) and
 [filecoin-station/spark-evaluate#89](https://github.com/filecoin-station/spark-evaluate/pull/89).
 
