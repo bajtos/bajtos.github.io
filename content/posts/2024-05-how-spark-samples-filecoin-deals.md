@@ -117,6 +117,7 @@ FIL+ LDN program and to have the expectation of public retrievability.
 
 ## What’s next
 
-This was the first post in the series explaining how SPARK checks retrievability. In next posts, we
-will explore how to find content identifiers (CIDs) of data stored in the deal and find the network
-address where to fetch the content from. Stay tuned!
+This was the first post in the series explaining how SPARK checks retrievability. In the next posts,
+we will explore
+[how to find content identifiers (CIDs) of data stored in the deal](/posts/2024-07-how-spark-discovers-content-stored-in-fil-deals)
+and find the network address where to fetch the content from. Stay tuned!
