@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/bajtos/bajtos.github.io#readme",
   "devDependencies": {
-    "netlify-cli": "^17.23.1",
     "prettier": "^3.2.5"
   }
 }

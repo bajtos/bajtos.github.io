@@ -3,6 +3,9 @@ title: Privacy-friendly web analytics that works in the Brave browser
 date: 2022-01-14
 ---
 
+_UPDATE: In January 2026, I have migrated my blog from Netlify & Plausible to 
+Cloudflare Pages. Their free analytics offering is good enough for what I need._
+
 For my blog, I have the following requirements for web analytics:
 
 1. Respect the privacy of my readers. Don't let Big Tech track their behaviour
