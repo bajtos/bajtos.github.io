@@ -1,0 +1,9 @@
+# URL-shortening
+/gh/* https://bajtos.github.io/:splat 301
+/PyQ /gh/2019-QuantumPython 302
+/Q /gh/2019-QuantumIntro 302
+/2018-QuantumIntro /gh/2019-QuantumIntro 302
+/T /gh/2018-AsyncAwait 302
+/2018-AsyncAwait /gh/2018-AsyncAwait 302
+/M /gh/2022-modernize-backend-stack 302
+/C /gh/2022-hold-my-context 302
